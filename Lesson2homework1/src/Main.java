@@ -1,18 +1,18 @@
 public class Main {
     public static void main(String[] args) {
 
-                double fuelPerLiter = 1.2;
-                int distanceToCity = 120;
-                double fuelConsumption100Km = 8;
+                double sideA = 0.3;
+                double sideB = 0.4;
+                double sideC = 0.5;
 
 
-                double fuelNeeded = (fuelConsumption100Km / 100) * distanceToCity;
+                double semiPerimeter = (sideA + sideB + sideC) / 2;
 
 
-                double totalCost = fuelNeeded * fuelPerLiter;
+                double area = Math.sqrt(semiPerimeter * (semiPerimeter - sideA) * (semiPerimeter - sideB) * (semiPerimeter - sideC));
 
 
-                System.out.println(totalCost + " $ The cost of travel ");
+                System.out.println("Area of a triangle: " + area);
             }
         }
 

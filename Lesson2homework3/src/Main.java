@@ -1,15 +1,18 @@
 public class Main {
     public static void main(String[] args) {
 
-        double appleCost = 2;
-        int numberOfApples = 6;
+        double fuelPerLiter = 1.2;
+        int distanceToCity = 120;
+        double fuelConsumption100Km = 8;
 
 
-        double totalCost = appleCost * numberOfApples;
+        double fuelNeeded = (fuelConsumption100Km / 100) * distanceToCity;
 
 
-        System.out.println(totalCost + "USD");
+        double totalCost = fuelNeeded * fuelPerLiter;
+
+
+        System.out.println(totalCost + " $ The cost of travel ");
     }
 }
-
 
