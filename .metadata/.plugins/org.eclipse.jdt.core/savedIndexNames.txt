@@ -1,0 +1,5 @@
+INDEX VERSION 1.134+D:\Учеба ИТ\Prog.Academy\Курс\Java _22_05_2024\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+3413270776.index
+1385223636.index
+3239767105.index
