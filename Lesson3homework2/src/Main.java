@@ -21,16 +21,15 @@ public class Main {
         if (apartmentNumber < 1 || apartmentNumber > totalApartments) {
             System.out.println("Такой квартиры нет в этом доме.");
         } else {
-
             int entranceNumber = (apartmentNumber - 1) / APARTMENTS_PER_ENTRANCE + 1;
-
 
             int apartmentInEntrance = (apartmentNumber - 1) % APARTMENTS_PER_ENTRANCE;
             int floorNumber = apartmentInEntrance / APARTMENTS_PER_FLOOR + 1;
 
+            System.out.println(" Квартира " + apartmentNumber + " находиться в подъезде " + entranceNumber + " , на " + floorNumber + " этаже. ");
 
-            System.out.println("Квартира " + apartmentNumber + " находится в подъезде " + entranceNumber + ", на " + floorNumber + " этаже.");
         }
+
 
     }
 }
