@@ -3,33 +3,31 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        // Запрашиваем число, для которого нужно найти квадратный корень
-        System.out.println("Введите число:");
-        double number = scanner.nextDouble();
+        // Запрашиваем у пользователя координаты точки
+        System.out.println("Введите координату x:");
+        double x = sc.nextDouble();
+        System.out.println("Введите координату y:");
+        double y = sc.nextDouble();
 
-        // Запрашиваем начальное приближение
-        System.out.println("Введите начальное приближение:");
-        double guess = scanner.nextDouble();
+        // Создаем точку и круг с радиусом 4 и центром в (0, 0)
+        Point point = new Point(x, y);
+        Circle circle = new Circle(new Point(0, 0), 4);
 
-        // Устанавливаем точность (разницу между текущим значением и квадратом числа,
-        // при которой алгоритм останавливается)
-        double epsilon = 0.00001;
-
-        // Инициализируем переменную для хранения текущего приближения
-        double currentGuess = guess;
-
-        // Выполняем итерации до тех пор, пока разница между текущим значением и квадратом числа
-        // не станет меньше заданной точности
-        while (Math.abs(currentGuess * currentGuess - number) >= epsilon) {
-            // Обновляем текущее приближение согласно итерационной формуле Герона
-            currentGuess = (currentGuess + number / currentGuess) / 2;
+        // Проверяем, находится ли точка внутри круга
+        if (pointInCircle(circle, point)) {
+            System.out.println("Точка " + point + " находится внутри круга.");
+        } else {
+            System.out.println("Точка " + point + " находится снаружи круга.");
         }
 
-        // Выводим найденный корень
-        System.out.println("Квадратный корень числа " + number + " = " + currentGuess);
+        sc.close();
+    }
 
-        scanner.close();
+    public static boolean pointInCircle(Circle circle, Point point) {
+        double differenceX = point.getX() - circle.getCenter().getX();
+        double differenceY = point.getY() - circle.getCenter().getY();
+        return (Math.pow(differenceX, 2) + Math.pow(differenceY, 2)) <= Math.pow(circle.getRadius(), 2);
     }
 }
