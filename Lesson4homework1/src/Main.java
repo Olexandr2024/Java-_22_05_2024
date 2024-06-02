@@ -3,17 +3,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
 
         System.out.println("Введите число n (4 < n < 16):");
-        int n = scanner.nextInt();
+        int n = sc.nextInt();
 
 
         if (n <= 4 || n >= 16) {
             System.out.println("Число должно быть больше 4 и меньше 16.");
         } else {
-
             long factorial = 1;
 
 
@@ -26,5 +25,6 @@ public class Main {
         }
 
 
+        sc.close();
     }
 }
