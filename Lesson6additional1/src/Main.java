@@ -17,10 +17,19 @@ public class Main {
         // Split the input into dollars and cents
         String[] parts = amount.split("\\.");
         int dollars = Integer.parseInt(parts[0]);
-        int cents = parts.length > 1 ? Integer.parseInt(parts[1]) : 0;
+        int cents = 0;
 
-        String dollarsText = convert(dollars) + " dollars";
-        String centsText = convert(cents) + " cents";
+        if (parts.length > 1) {
+            // Ensure the cents part is exactly two digits
+            String centsPart = parts[1];
+            if (centsPart.length() == 1) {
+                centsPart += "0";
+            }
+            cents = Integer.parseInt(centsPart);
+        }
+
+        String dollarsText = convert(dollars) + " dollar" + (dollars != 1 ? "s" : "");
+        String centsText = convert(cents) + " cent" + (cents != 1 ? "s" : "");
 
         System.out.println("You have: " + dollarsText + " " + centsText);
     }
