@@ -1,31 +1,43 @@
-import java.io.File;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class Main {
 
     public static void main(String[] args) {
+        String filePath = "ascii_art.txt";
+        int width = 40;
+        int height = 40;
+        String pattern = generateCheckerBoardPattern(width, height);
 
-        String[] goods = new String[] { "Snikers", "Mars", "Kontik", "Twix" };
-        int[] price = new int[] { 30, 30, 20, 25 };
-        int[] count = new int[] { 40, 25, 30, 30 };
-
-        String del = ";";
-        File file = new File("report.csv");
-
-        saveReport(file, del, goods, price, count);
+        try {
+            writeToFile(filePath, pattern);
+            System.out.println("ASCII art successfully written to " + filePath);
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
     }
 
-    public static void saveReport(File file, String del, String[] goods, int[] price, int[] count) {
-        try (PrintWriter pw = new PrintWriter(file)) {
-
-            for (int i = 0; i < goods.length; i++) {
-                pw.println(goods[i] + del + price[i] + del + count[i]);
+    // Метод для генерации узора шахматной доски
+    private static String generateCheckerBoardPattern(int width, int height) {
+        StringBuilder pattern = new StringBuilder();
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                if ((x + y) % 2 == 0) {
+                    pattern.append('#');
+                } else {
+                    pattern.append(' ');
+                }
             }
+            pattern.append('\n');
+        }
+        return pattern.toString();
+    }
 
-        } catch (IOException e) {
-            // TODO: handle exception
-            e.printStackTrace();
+    // Метод для записи узора в файл
+    private static void writeToFile(String filePath, String content) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write(content);
         }
     }
 }
